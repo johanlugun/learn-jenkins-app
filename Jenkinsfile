@@ -20,5 +20,15 @@ pipeline {
                 '''
             }
         }
+        stage('Test'){
+            steps{
+                echo 'Testing App'
+                sh '''
+                    grep -r -l "\.html$" build/
+                    npm test 
+                '''
+                
+            }
+        }
     }
 }
