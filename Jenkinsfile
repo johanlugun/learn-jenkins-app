@@ -24,7 +24,7 @@ pipeline {
             steps{
                 echo 'Testing App'
                 sh '''
-                    grep -r "index.html" /build
+                    grep -r "index.html" build/
                     npm test 
                 '''
                 
