@@ -21,10 +21,16 @@ pipeline {
             }
         }
         stage('Test'){
+            agent{
+                docker{
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps{
                 echo 'Testing App'
                 sh '''
-                    grep -r "index.html" build/
+                    test -f build/index.html
                     npm test 
                 '''
                 
