@@ -37,7 +37,7 @@ pipeline {
         stage('E2E'){
             agent{
                 docker{
-                    image 'mcr.microsoft.com/playwright:v1.39.0-noble '
+                    image 'mcr.microsoft.com/playwright:v1.39.0-noble'
                     reuseNode true
                 }
             }
@@ -51,12 +51,12 @@ pipeline {
             }
         }
     }
-    //post{
-    //    always{
+    post{
+        always{
             //junit 'jest-results/junit.xml'
-            /* junit skipPublishingChecks: true,
+            junit skipPublishingChecks: true,
             testResults: 'jest-results/junit.xml'
-            publishHTML([
+            /* publishHTML([
                 allowMissing: false, 
                 alwaysLinkToLastBuild: false, 
                 keepAll: false, 
@@ -66,6 +66,6 @@ pipeline {
                 reportTitles: '', 
                 useWrapperFileDirectly: true
             ]) */
-    //    }
-    //}
+        }
+    }
 }
