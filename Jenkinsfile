@@ -56,7 +56,7 @@ pipeline {
             //junit 'jest-results/junit.xml'
             junit skipPublishingChecks: true,
             testResults: 'jest-results/junit.xml'
-            publishHTML([
+            /* publishHTML([
                 allowMissing: false, 
                 alwaysLinkToLastBuild: false, 
                 keepAll: false, 
@@ -65,7 +65,7 @@ pipeline {
                 reportName: 'Playwright HTML Report', 
                 reportTitles: '', 
                 useWrapperFileDirectly: true
-            ])
+            ]) */
         }
     }
 }
