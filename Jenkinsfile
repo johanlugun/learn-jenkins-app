@@ -51,8 +51,8 @@ pipeline {
             }
         }
     }
-    post{
-        always{
+    //post{
+    //    always{
             //junit 'jest-results/junit.xml'
             /* junit skipPublishingChecks: true,
             testResults: 'jest-results/junit.xml'
@@ -66,6 +66,6 @@ pipeline {
                 reportTitles: '', 
                 useWrapperFileDirectly: true
             ]) */
-        }
-    }
+    //    }
+    //}
 }
