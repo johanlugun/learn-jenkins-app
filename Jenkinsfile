@@ -54,9 +54,9 @@ pipeline {
     post{
         always{
             //junit 'jest-results/junit.xml'
-            junit skipPublishingChecks: true,
+            /* junit skipPublishingChecks: true,
             testResults: 'jest-results/junit.xml'
-            /* publishHTML([
+            publishHTML([
                 allowMissing: false, 
                 alwaysLinkToLastBuild: false, 
                 keepAll: false, 
