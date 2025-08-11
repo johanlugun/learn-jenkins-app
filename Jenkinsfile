@@ -57,11 +57,9 @@ pipeline {
                             sleep 10
                             npx playwright test --reporter=html
                         '''                
-                    }
-                    
+                    }                    
                     post{
                         always{
-                            junit skipPublishingChecks: true,
                             publishHTML([
                                 allowMissing: false, 
                                 alwaysLinkToLastBuild: false, 
