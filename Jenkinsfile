@@ -72,7 +72,7 @@ pipeline {
                                 keepAll: false,
                                 reportDir: 'playwright-report',
                                 reportFiles: 'index.html',
-                                reportName: 'Playwright HTML Report',
+                                reportName: 'Local - Playwright HTML Report',
                                 reportTitles: '',
                                 useWrapperFileDirectly: true
                             ])
@@ -96,6 +96,37 @@ pipeline {
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --prod
                 '''
+            }
+        }
+        stage('Prod E2E'){
+            agent{
+                docker{
+                    image 'mcr.microsoft.com/playwright:v1.50.0-noble'
+                    reuseNode true
+                }
+            }
+            environment{
+                CI_ENVIRONMENT_URL = 'https://majestic-truffle-4fb732.netlify.app'
+            }
+            steps{
+                sh '''
+                    npx playwright test --reporter=html
+                '''                
+            }                    
+            post{
+                always{
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        icon: '',
+                        keepAll: false,
+                        reportDir: 'playwright-report',
+                        reportFiles: 'index.html',
+                        reportName: 'Prod - Playwright HTML Report',
+                        reportTitles: '',
+                        useWrapperFileDirectly: true
+                    ])
+                }
             }
         }
     }    
